@@ -1,0 +1,214 @@
+@font-face {
+	font-family: 'Boldfinger';
+	src: url('fonts/Boldfinger.ttf');
+}
+
+:root {
+	/* Base Palette Mapping */
+	--clr-orange: #de5c36;
+	--clr-white: #ffffff;
+	--clr-platinum: #e6e8e5;
+	--clr-silver: #ced0cd;
+	--clr-black: #000000;
+
+	/* Fonts */
+	--heading-font: 'Boldfinger', sans-serif;
+	--sub-heading-font: 'League Spartan', sans-serif;
+	--paragraph-font: 'Nunito Sans', sans-serif;
+
+	/* Light Mode (Default) */
+	--primary-color: var(--clr-black);
+	--secondary-color: var(--clr-white);
+	--accent1-color: var(--clr-orange);
+	--accent2-color: var(--clr-silver);
+	--accent3-color: var(--clr-platinum);
+
+	/* Text and elements colors - Light */
+	--headline-color-on-white: var(--clr-black);
+	--headline-color-on-color: var(--clr-white);
+	--paragraph-color-on-white: color-mix(in srgb, var(--clr-black), transparent 15%);
+	--paragraph-color-on-color: var(--clr-white);
+	--paragraph-background-color: var(--clr-platinum);
+
+	/* Navigation - Light */
+	--nav-link-color: var(--clr-black);
+	--nav-background-color: var(--clr-white);
+	--nav-hover-link-color: var(--clr-orange);
+	--nav-hover-background-color: var(--clr-platinum);
+
+	/* Semantic Mixes */
+	--border-subtle: color-mix(in srgb, var(--clr-silver), transparent 50%);
+	--button-hover: color-mix(in srgb, var(--clr-orange), black 15%);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--primary-color: var(--clr-white);
+		--secondary-color: var(--clr-black);
+		--accent2-color: color-mix(in srgb, var(--clr-silver), black 60%);
+		--accent3-color: color-mix(in srgb, var(--clr-black), white 5%);
+
+		--headline-color-on-white: var(--clr-white);
+		--paragraph-color-on-white: var(--clr-silver);
+		--paragraph-background-color: color-mix(in srgb, var(--clr-black), white 8%);
+
+		--nav-link-color: var(--clr-white);
+		--nav-background-color: color-mix(in srgb, var(--clr-black), white 2%);
+		--nav-hover-link-color: var(--clr-orange);
+		--nav-hover-background-color: color-mix(in srgb, var(--clr-white), transparent 90%);
+
+		--border-subtle: color-mix(in srgb, var(--clr-white), transparent 85%);
+		--button-hover: color-mix(in srgb, var(--clr-orange), white 10%);
+	}
+}
+
+/* Global Styles */
+body {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 4em;
+	font-size: 18px;
+	text-align: center;
+	font-family: var(--paragraph-font);
+	color: var(--paragraph-color-on-white);
+	background-color: var(--secondary-color); /* Asegura el fondo según el modo */
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
+}
+
+article {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+	font-family: var(--heading-font);
+	color: var(--headline-color-on-white);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--sub-heading-font);
+	color: var(--headline-color-on-white);
+	font-weight: 700;
+}
+
+h2 {
+	text-align: center;
+}
+
+hr {
+	height: 3px;
+	border: none;
+	margin: 35px 0;
+	background: var(--accent1-color);
+}
+
+header {
+	padding: 2em;
+	text-align: center;
+	background-color: var(--paragraph-background-color);
+	border-radius: 8px;
+}
+
+header > h1,
+header > h2 {
+	color: var(--primary-color);
+}
+
+p {
+	padding: 1em;
+	line-height: 1.6;
+}
+
+p.colored {
+	background-color: var(--paragraph-background-color);
+	color: var(--primary-color);
+}
+
+img {
+	width: 75%;
+}
+
+/* Navigation */
+nav {
+	background-color: var(--nav-background-color);
+	list-style-type: none;
+	display: flex;
+	font-family: var(--sub-heading-font); /* Cambiado a Spartan para mejor legibilidad en UI */
+	justify-content: flex-end;
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+nav a {
+	text-decoration: none;
+	padding: 15px 20px;
+	transition: 0.2s ease;
+}
+
+nav a:link,
+nav a:visited {
+	color: var(--nav-link-color);
+}
+
+nav a:hover {
+	color: var(--nav-hover-link-color);
+	background-color: var(--nav-hover-background-color);
+}
+
+/* Button */
+#join {
+	font-family: var(--sub-heading-font);
+	font-size: 0.9em;
+	padding: 0.6em 1.5em;
+	align-self: center;
+	font-weight: bold;
+	color: var(--clr-white);
+	background-color: var(--accent1-color);
+	border-radius: 4px;
+	margin: auto 1em;
+	transition: background-color 0.2s ease;
+}
+
+#join:hover {
+	background-color: var(--button-hover);
+	color: var(--clr-white);
+}
+
+.logo {
+	content: url('../images/logo-light.png');
+}
+
+@media (prefers-color-scheme: dark) {
+	.logo {
+		content: url('../images/logo-dark.png');
+	}
+}
+
+/* Table for color visualization */
+.colors td {
+	border: 1px solid var(--border-subtle);
+}
+.primary {
+	background-color: var(--primary-color);
+}
+.secondary {
+	background-color: var(--secondary-color);
+}
+.accent1 {
+	background-color: var(--accent1-color);
+}
+.accent2 {
+	background-color: var(--accent2-color);
+}
+.accent3 {
+	background-color: var(--accent3-color);
+}
